@@ -2,12 +2,7 @@ import fileinput
 
 
 def main():
-    freq: int = 0
-
-    for line in fileinput.input():
-        freq += int(line)
-
-    print(freq)
+    print(sum([int(x) for x in fileinput.input()]))
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 import fileinput
-from typing import Dict
+from collections import Counter
 
 
 def main():
@@ -7,17 +7,11 @@ def main():
     triples: int = 0
 
     for line in fileinput.input():
-        letters: Dict[str, int] = {}
-        for letter in line:
-            if letter in letters:
-                letters.update({letter: letters[letter] + 1})
-            else:
-                letters.update({letter: 1})
+        counter = Counter(line.rstrip())
 
-        if 2 in letters.values():
+        if 2 in [x[1] for x in counter.most_common()]:
             doubles += 1
-
-        if 3 in letters.values():
+        if 3 in [x[1] for x in counter.most_common()]:
             triples += 1
 
     print(doubles * triples)

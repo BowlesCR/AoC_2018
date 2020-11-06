@@ -3,10 +3,7 @@ from typing import List, Set
 
 
 def main():
-    changes: List[int] = []
-
-    for line in fileinput.input():
-        changes.append(int(line))
+    changes: List[int] = [int(line) for line in fileinput.input()]
 
     freq: int = 0
     pastFreq: Set[int] = set()
@@ -18,7 +15,7 @@ def main():
                 print(freq)
                 exit()
             pastFreq.add(freq)
-            print(freq)
+            # print(freq)
 
 
 if __name__ == "__main__":
